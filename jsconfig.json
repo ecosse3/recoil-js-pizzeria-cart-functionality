@@ -1,5 +1,9 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "paths": {
+      "@*": ["./src/*"]
+    }
+  },
   "exclude": [""],
   "include": ["src/**/*"]
 }

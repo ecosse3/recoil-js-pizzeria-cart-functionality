@@ -6,7 +6,14 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'airbnb',
+    'plugin:import/errors',
+    'plugin:import/warnings'
   ],
+  settings: {
+    'import/resolver': {
+      'babel-module': {}
+    }
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
