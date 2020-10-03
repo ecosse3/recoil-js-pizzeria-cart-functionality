@@ -3,6 +3,11 @@
   src: local('MontserratSubrayada'), url(./assets/fonts/MontserratSubrayada-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'DM Serif Display';
+  src: local('DMSerifDisplay'), url(./assets/fonts/DMSerifDisplay-Regular.ttf) format('truetype');
+}
+
 html,
 body {
   margin: 0;

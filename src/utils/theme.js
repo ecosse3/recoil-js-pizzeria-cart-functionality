@@ -5,7 +5,9 @@ export const theme = {
     black: '#000000',
     white: '#FFFFFF',
     primary: '#F8593B',
-    secondary: '#2ECC71'
+    secondary: '#2ECC71',
+    deepBlue: '#081F32',
+    indigoFlight: '#6E798C'
   },
 
   flexboxgrid: {
