@@ -13,7 +13,7 @@ const Header = () => (
           <Logo />
         </Col>
         <Col>
-          <Button color="secondary">Cart: 2</Button>
+          <Button color="secondary" icon="shopping">Cart: 2</Button>
         </Col>
       </Row>
     </Grid>

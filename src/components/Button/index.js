@@ -8,7 +8,7 @@ import { ButtonContainer, ShoppingCartIcon } from './styles';
 
 const Button = (props) => {
   const {
-    color, width, height, children
+    color, width, height, children, icon
   } = props;
 
   return (
@@ -17,7 +17,7 @@ const Button = (props) => {
       width={width}
       height={height}
     >
-      <ShoppingCartIcon />
+      {icon === 'shopping' && <ShoppingCartIcon />}
       {children}
     </ButtonContainer>
   );
