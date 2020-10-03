@@ -25,6 +25,15 @@ export const theme = {
       md: 64, // em
       lg: 75 // em
     }
+  },
+
+  textStyles: {
+    heading: {
+      fontSize: [24, 32, 48],
+      fontWeight: [400],
+      lineHeight: [1.17],
+      fontFamily: 'Montserrat Subrayada'
+    }
   }
 };
 
