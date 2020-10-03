@@ -33,3 +33,7 @@ code {
 small {
   display: block;
 }
+
+a {
+  text-decoration: none;
+}
