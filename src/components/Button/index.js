@@ -1,8 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-styled-flexboxgrid';
-
-import { theme, useIsMobile } from '../../utils/theme';
-import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 
 import { ButtonContainer, ShoppingCartIcon } from './styles';
 
