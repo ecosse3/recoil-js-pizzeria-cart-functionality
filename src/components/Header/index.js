@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
 import { Container } from './styles';
@@ -10,10 +11,14 @@ const Header = () => (
     <Grid>
       <Row between="xs" middle="xs">
         <Col>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </Col>
         <Col>
-          <Button color="secondary" icon="shopping">Cart: 2</Button>
+          <Link to="/cart">
+            <Button color="secondary" icon="shopping">Cart: 2</Button>
+          </Link>
         </Col>
       </Row>
     </Grid>
