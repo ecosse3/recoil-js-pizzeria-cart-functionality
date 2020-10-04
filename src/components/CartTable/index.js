@@ -18,17 +18,21 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { currency } from '../../utils/consts';
+import { useRemoveProduct } from '../../store';
 
-function createData(name, amount, price) {
+function createData(id, name, amount, price) {
   return {
-    name, amount, price: price.toFixed(2), total: (amount * price).toFixed(2)
+    id, name, amount, price: price.toFixed(2), total: (amount * price).toFixed(2)
   };
 }
 
-const rows = [
-  createData('Cupcake', 1, 29.99, 29.99),
-  createData('Donut', 2, 25, 25)
-];
+function removeSelectedFromCart(productsToRemove, remove, clearSelected) {
+  productsToRemove.forEach((id) => {
+    remove(id);
+  });
+
+  clearSelected();
+}
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -148,7 +152,9 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
+  const {
+    numSelected, productsToRemove, remove, clearSelected
+  } = props;
 
   return (
     <Toolbar
@@ -169,7 +175,7 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 && (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon onClick={() => { removeSelectedFromCart(productsToRemove, remove, clearSelected); }} />
           </IconButton>
         </Tooltip>
       )}
@@ -205,13 +211,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function EnhancedTable() {
+export default function EnhancedTable(props) {
+  const { products, total } = props;
+
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rows, setRows] = React.useState([]);
+
+  const removeProduct = useRemoveProduct();
+
+  const cartItems = [];
+
+  React.useEffect(() => {
+    products.map(product => cartItems.push(createData(product.id, product.name, product.amount, product.price)));
+    setRows(cartItems);
+  }, [products]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -221,19 +239,19 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, id) => {
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -257,14 +275,14 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (id) => selected.indexOf(id) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} productsToRemove={selected} remove={(id) => removeProduct(id)} clearSelected={() => setSelected([])} />
         <TableContainer>
           <Table
             className={classes.table}
@@ -285,13 +303,13 @@ export default function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -318,6 +336,10 @@ export default function EnhancedTable() {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
+              <TableRow>
+                <TableCell colSpan={4}>Total</TableCell>
+                <TableCell align="right">{total.toFixed(2)} {currency}</TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
