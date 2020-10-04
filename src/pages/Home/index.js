@@ -41,7 +41,7 @@ const Home = () => {
             <SliderWrapper>
               <Slider {...settings}>
                 {data?.map((product) => (
-                  <Card key={product.id} image={product.image} title={product.title} description={product.description} price={product.price} priceOld={product.priceOld} icons={product.icons} />
+                  <Card key={product.id} id={product.id} image={product.image} title={product.title} description={product.description} price={product.price} priceOld={product.priceOld} icons={product.icons} />
                 ))}
               </Slider>
             </SliderWrapper>
