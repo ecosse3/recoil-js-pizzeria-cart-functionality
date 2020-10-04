@@ -212,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
-  const { products, total } = props;
+  const { products, totalCost, totalQty } = props;
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -337,8 +337,10 @@ export default function EnhancedTable(props) {
                 </TableRow>
               )}
               <TableRow>
-                <TableCell colSpan={4}>Total</TableCell>
-                <TableCell align="right">{total.toFixed(2)} {currency}</TableCell>
+                <TableCell colSpan={2}>Total</TableCell>
+                <TableCell align="right">{totalQty > 0 && totalQty}</TableCell>
+                <TableCell />
+                <TableCell align="right">{totalCost.toFixed(2)} {currency}</TableCell>
               </TableRow>
             </TableBody>
           </Table>

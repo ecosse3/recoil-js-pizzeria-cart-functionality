@@ -11,7 +11,7 @@ import { cart, cartState } from '../../store';
 
 const Cart = () => {
   const cartItems = useRecoilValue(cart);
-  const { totalCost } = useRecoilValue(cartState);
+  const { totalCost, totalQty } = useRecoilValue(cartState);
 
   return (
     <>
@@ -24,7 +24,7 @@ const Cart = () => {
             </Col>
           </Row>
           <Row>
-            <CartTable products={cartItems} total={totalCost} />
+            <CartTable products={cartItems} totalCost={totalCost} totalQty={totalQty} />
           </Row>
         </Grid>
       </Container>
