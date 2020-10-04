@@ -19,13 +19,13 @@ export const theme = {
     container: {
       sm: 46, // rem
       md: 61, // rem
-      lg: 76 // rem
+      lg: 82 // rem
     },
     breakpoints: {
       xs: 0, // em
       sm: 48, // em
       md: 64, // em
-      lg: 75 // em
+      lg: 80 // em
     }
   },
 

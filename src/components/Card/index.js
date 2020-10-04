@@ -7,18 +7,21 @@ import {
   CardContentWrapper,
   CardWrapper,
   Description,
+  Icon,
   Image,
   Info,
   OrderButton,
   Price,
   PriceOld,
   Title,
-  Top
+  Top,
+  TopData,
+  IconsWrapper
 } from './styles';
 
 const Card = (props) => {
   const {
-    image, title, icons, description, price, priceOld, ingredients
+    image, title, icons, description, price, priceOld
   } = props;
 
   return (
@@ -27,8 +30,12 @@ const Card = (props) => {
       <Info onClick={() => console.log('click')} />
       <CardContentWrapper>
         <Top>
-          <Title>{title}</Title>
-          {/* {icons?.forEach(icon => <Icon />)} */}
+          <TopData>
+            <Title>{title}</Title>
+            <IconsWrapper>
+              {icons?.map(icon => <Icon icon={icon} />)}
+            </IconsWrapper>
+          </TopData>
           <Description>{description}</Description>
         </Top>
         <Bottom>
@@ -48,11 +55,10 @@ const Card = (props) => {
 Card.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  icons: PropTypes.arrayOf(PropTypes.string).isRequired,
+  icons: PropTypes.arrayOf(PropTypes.string),
   description: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  priceOld: PropTypes.string,
-  ingredients: PropTypes.string.isRequired
+  priceOld: PropTypes.string
 };
 
 export default Card;

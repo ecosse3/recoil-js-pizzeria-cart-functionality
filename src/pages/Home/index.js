@@ -1,18 +1,31 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
+import Slider from 'react-slick';
 import Hero from '../../components/Hero';
 import Card from '../../components/Card';
+import SliderArrow from '../../components/SliderArrow';
 
-import Image1 from '../../assets/images/card1.png';
+import data from '../../utils/data';
 
 import { Heading } from '../../utils/typography';
 import { useIsMobile } from '../../utils/theme';
 
-import { SliderSection } from './styles';
+import { SliderSection, SliderWrapper } from './styles';
+
 
 const Home = () => {
   const isMobile = useIsMobile();
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: isMobile ? 1 : 3,
+    slidesToScroll: 1,
+    nextArrow: <SliderArrow next />,
+    prevArrow: <SliderArrow prev />
+  };
 
   return (
     <>
@@ -24,16 +37,14 @@ const Home = () => {
               <Heading mb={60}>Our menu</Heading>
             </Col>
           </Row>
-          <Row center="xs">
-            <Col>
-              <Card image={Image1} title="Pepperoni Pizza" description="Premium pepperoni and cheese is made with real mozzarella on original hand-tossed crust." price="21,99 zł" priceOld="26,99 zł" />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
+          <Row>
+            <SliderWrapper>
+              <Slider {...settings}>
+                {data?.map((product) => (
+                  <Card key={product.id} image={product.image} title={product.title} description={product.description} price={product.price} priceOld={product.priceOld} icons={product.icons} />
+                ))}
+              </Slider>
+            </SliderWrapper>
           </Row>
         </Grid>
       </SliderSection>

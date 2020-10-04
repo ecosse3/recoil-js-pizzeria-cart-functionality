@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { theme } from '../../utils/theme';
 import InfoSVG from '../../assets/svg/info.svg';
+import VegeSVG from '../../assets/svg/vege_icon.svg';
+import HotSVG from '../../assets/svg/hot_icon.svg';
+import WheatSVG from '../../assets/svg/wheat_icon.svg';
+
 import Button from '../Button';
 
 export const CardWrapper = styled.div`
@@ -17,9 +21,24 @@ export const CardWrapper = styled.div`
 export const ButtonContainer = styled.div`
   display: inline-block;
   padding-left: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.18em;
 `;
 
 export const Top = styled.div`
+`;
+
+export const TopData = styled.div`
+  display: flex;
+  align-items: flex-start;
+  padding: 32px 24px 0 24px;
+  justify-content: space-between;
+`;
+
+export const IconsWrapper = styled.div`
+  margin-top: 2px;
 `;
 
 export const Bottom = styled.div`
@@ -37,7 +56,7 @@ export const CardContentWrapper = styled.div`
 export const Image = styled.div`
   position: relative;
   background: url(${props => props.src});
-  background-size: cover;
+  background-size: auto;
   width: 100%;
   height: 216px;
   border-radius: 16px 16px 0 0;
@@ -66,13 +85,12 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.div`
-  display: block;
+  display: inline-block;
   font-family: 'DM Serif Display';
   font-size: 24px;
   font-weight: 400;
   color: ${theme.colors.deepBlue};
   line-height: 1.05;
-  padding: 32px 24px 0 24px;
 `;
 
 export const Description = styled.div`
@@ -103,9 +121,30 @@ export const PriceOld = styled.div`
   text-decoration: line-through;
 `;
 
-export const OrderButton = styled(Button)`
-  display: inline-block;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+export const OrderButton = styled(Button)``;
+
+const handleIcon = icon => {
+  switch (icon) {
+    case 'vege':
+      return `${VegeSVG}`;
+
+    case 'wheat':
+      return `${WheatSVG}`;
+
+    case 'hot':
+      return `${HotSVG}`;
+
+    default:
+      return '';
+  }
+};
+
+export const Icon = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-self: flex-end;
+  background: url(${({ icon }) => handleIcon(icon)});
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
 `;
