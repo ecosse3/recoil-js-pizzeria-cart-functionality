@@ -5,6 +5,8 @@ import {
   Route
 } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { RecoilRoot } from 'recoil';
+
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Header from './components/Header';
@@ -13,16 +15,18 @@ import { theme } from './utils/theme';
 
 function App() {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <Switch>
-          <Route exact path="/"><Home /></Route>
-          <Route path="/cart"><Cart /></Route>
-        </Switch>
-        <Footer />
-      </ThemeProvider>
-    </Router>
+    <RecoilRoot>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Switch>
+            <Route exact path="/"><Home /></Route>
+            <Route path="/cart"><Cart /></Route>
+          </Switch>
+          <Footer />
+        </ThemeProvider>
+      </Router>
+    </RecoilRoot>
   );
 }
 
