@@ -9,8 +9,8 @@ const data = [
     image: Card1,
     title: 'Pepperoni Pizza',
     description: 'Premium pepperoni and cheese is made with real mozzarella on original hand-tossed crust.',
-    price: '23,90 zł',
-    priceOld: '29,90 zł',
+    price: 23.90,
+    priceOld: 29.90,
     icons: ['hot', 'wheat']
   },
   {
@@ -18,8 +18,8 @@ const data = [
     image: Card2,
     title: 'Tortellini',
     description: 'Pasta stuffed with beef and pork topped with your choice of cream sauce with bacon, bolognese or marinara sauce.',
-    price: '17,90 zł',
-    priceOld: '22,90 zł',
+    price: 17.90,
+    priceOld: 22.90,
     icons: ['vege', 'hot', 'wheat']
   },
   {
@@ -27,8 +27,8 @@ const data = [
     image: Card3,
     title: 'Strawberry Cake',
     description: 'Three layer strawberry dessert is not only beautiful looking, but also delicious! Perfect dessert for spring and summer.',
-    price: '13,90 zł',
-    priceOld: '18,90 zł',
+    price: 13.90,
+    priceOld: 18.90,
     icons: ['wheat']
   },
   {
@@ -36,7 +36,7 @@ const data = [
     image: Card4,
     title: 'Chefs Pizza',
     description: 'Premium pepperoni and cheese is made with real mozzarella on original hand-tossed crust.',
-    price: '27,90 zł',
+    price: 27.90,
     icons: ['wheat']
   }
 ];

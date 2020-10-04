@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { currency } from '../../utils/consts';
 
 import {
   Bottom,
@@ -39,9 +40,9 @@ const Card = (props) => {
           <Description>{description}</Description>
         </Top>
         <Bottom>
-          <Price>{price}</Price>
+          <Price>{price.toFixed(2)} {currency}</Price>
           {priceOld && (
-          <PriceOld>{priceOld}</PriceOld>
+          <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
           <ButtonContainer>
             <OrderButton>ORDER</OrderButton>
