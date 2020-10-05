@@ -17,8 +17,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { currency } from '../../utils/consts';
-import { useRemoveProduct } from '../../store';
+import { useRemoveProduct, useAddProduct, useDecreaseProduct } from '../../store';
+import { theme } from '../../utils/theme';
 
 function createData(id, name, amount, price) {
   return {
@@ -65,13 +68,16 @@ const headCells = [
     id: 'name', numeric: false, disablePadding: true, label: 'Product'
   },
   {
-    id: 'amount', numeric: true, disablePadding: false, label: 'Amount'
+    id: 'amount', numeric: true, disablePadding: true, label: 'Amount'
   },
   {
     id: 'price', numeric: true, disablePadding: false, label: 'Price'
   },
   {
     id: 'total', numeric: true, disablePadding: false, label: 'Total'
+  },
+  {
+    id: 'delete', numeric: false, disablePadding: true, label: ''
   }
 ];
 
@@ -184,7 +190,10 @@ const EnhancedTableToolbar = (props) => {
 };
 
 EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired
+  numSelected: PropTypes.number.isRequired,
+  productsToRemove: PropTypes.arrayOf(PropTypes.number).isRequired,
+  remove: PropTypes.func.isRequired,
+  clearSelected: PropTypes.func.isRequired
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -223,6 +232,8 @@ export default function EnhancedTable(props) {
   const [rows, setRows] = React.useState([]);
 
   const removeProduct = useRemoveProduct();
+  const increaseAmount = useAddProduct();
+  const decreaseAmount = useDecreaseProduct();
 
   const cartItems = [];
 
@@ -230,6 +241,10 @@ export default function EnhancedTable(props) {
     products.map(product => cartItems.push(createData(product.id, product.name, product.amount, product.price)));
     setRows(cartItems);
   }, [products]);
+
+  React.useEffect(() => {
+    console.log('selected: ', selected);
+  }, [selected]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -309,7 +324,6 @@ export default function EnhancedTable(props) {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -320,14 +334,31 @@ export default function EnhancedTable(props) {
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
+                          onClick={(event) => handleClick(event, row.id)}
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.amount}</TableCell>
+                      <TableCell align="right" padding="none">
+                        <RemoveCircleIcon
+                          onClick={() => decreaseAmount({ id: row.id, name: row.name, price: row.price })}
+                          style={{
+                            cursor: 'pointer', color: theme.colors.primary, verticalAlign: 'middle', marginRight: 5
+                          }}
+                        />
+                        {row.amount} <AddCircleIcon
+                          onClick={() => increaseAmount({ id: row.id, name: row.name, price: row.price })}
+                          style={{
+                            cursor: 'pointer', color: theme.colors.primary, verticalAlign: 'middle'
+                          }}
+                        />
+                      </TableCell>
                       <TableCell align="right">{row.price} {currency}</TableCell>
                       <TableCell align="right">{row.total} {currency}</TableCell>
+                      <TableCell padding="none">
+                        <DeleteIcon onClick={() => removeProduct(row.id)} style={{ cursor: 'pointer', color: theme.colors.primary, marginTop: 5 }} />
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -341,6 +372,7 @@ export default function EnhancedTable(props) {
                 <TableCell align="right">{totalQty > 0 && totalQty}</TableCell>
                 <TableCell />
                 <TableCell align="right">{totalCost.toFixed(2)} {currency}</TableCell>
+                <TableCell />
               </TableRow>
             </TableBody>
           </Table>

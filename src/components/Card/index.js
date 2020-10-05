@@ -30,7 +30,7 @@ const Card = (props) => {
     id, image, title, icons, description, price, priceOld
   } = props;
 
-  const addItem = useAddProduct();
+  const addProduct = useAddProduct();
   const { openSnackBar } = useSnackbar();
 
   const showSnackbarHandler = () => {
@@ -56,7 +56,7 @@ const Card = (props) => {
           {priceOld && (
           <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
-          <ButtonContainer onClick={() => { addItem({ id, name: title, price }); showSnackbarHandler(); }}>
+          <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); showSnackbarHandler(); }}>
             <OrderButton>ORDER</OrderButton>
           </ButtonContainer>
         </Bottom>
