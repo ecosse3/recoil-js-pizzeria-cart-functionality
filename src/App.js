@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/"><Home /></Route>
           <Route path="/cart"><Cart /></Route>
         </Switch>
-        <Snackbar open={isActive} autoHideDuration={3000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+        <Snackbar open={isActive} autoHideDuration={1500} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
           <MuiAlert elevation={6} variant="filled" severity="success">
             {message}
           </MuiAlert>
