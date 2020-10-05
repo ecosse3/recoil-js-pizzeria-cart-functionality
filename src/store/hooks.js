@@ -9,14 +9,14 @@ const cloneIndex = (items, id) => ({
 export const useAddProduct = () => {
   const [products, setProducts] = useRecoilState(cart);
 
-  return (item) => {
-    const { clone, index } = cloneIndex(products, item.id);
+  return (product) => {
+    const { clone, index } = cloneIndex(products, product.id);
 
     if (index !== -1) {
       clone[index].amount += 1;
       setProducts(clone);
     } else {
-      setProducts([...clone, { ...item, amount: 1 }]);
+      setProducts([...clone, { ...product, amount: 1 }]);
     }
   };
 };
@@ -26,5 +26,21 @@ export const useRemoveProduct = () => {
 
   return (product) => {
     setProducts(products.filter((item) => item.id !== product));
+  };
+};
+
+export const useDecreaseProduct = () => {
+  const [products, setProducts] = useRecoilState(cart);
+  const removeProduct = useRemoveProduct();
+
+  return (product) => {
+    const { clone, index } = cloneIndex(products, product.id);
+
+    if (clone[index].amount === 1) {
+      removeProduct(product.id);
+    } else {
+      clone[index].amount -= 1;
+      setProducts(clone);
+    }
   };
 };
