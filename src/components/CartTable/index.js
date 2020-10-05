@@ -21,7 +21,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { currency } from '../../utils/consts';
 import { useRemoveProduct, useAddProduct, useDecreaseProduct } from '../../store';
-import { theme } from '../../utils/theme';
+import { theme as appTheme } from '../../utils/theme';
 
 function createData(id, name, amount, price) {
   return {
@@ -344,20 +344,20 @@ export default function EnhancedTable(props) {
                         <RemoveCircleIcon
                           onClick={() => decreaseAmount({ id: row.id, name: row.name, price: row.price })}
                           style={{
-                            cursor: 'pointer', color: theme.colors.primary, verticalAlign: 'middle', marginRight: 5
+                            cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle', marginRight: 5
                           }}
                         />
                         {row.amount} <AddCircleIcon
                           onClick={() => increaseAmount({ id: row.id, name: row.name, price: row.price })}
                           style={{
-                            cursor: 'pointer', color: theme.colors.primary, verticalAlign: 'middle'
+                            cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle'
                           }}
                         />
                       </TableCell>
                       <TableCell align="right">{row.price} {currency}</TableCell>
                       <TableCell align="right">{row.total} {currency}</TableCell>
                       <TableCell padding="none">
-                        <DeleteIcon onClick={() => removeProduct(row.id)} style={{ cursor: 'pointer', color: theme.colors.primary, marginTop: 5 }} />
+                        <DeleteIcon onClick={() => removeProduct(row.id)} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
                       </TableCell>
                     </TableRow>
                   );
