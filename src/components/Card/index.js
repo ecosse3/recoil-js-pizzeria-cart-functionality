@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { currency } from '../../utils/consts';
+
 
 import {
   Bottom,
@@ -21,6 +23,7 @@ import {
 } from './styles';
 
 import { useAddProduct } from '../../store';
+import { useSnackbar } from '../../hooks/useSnackbar';
 
 const Card = (props) => {
   const {
@@ -28,6 +31,11 @@ const Card = (props) => {
   } = props;
 
   const addItem = useAddProduct();
+  const { openSnackBar } = useSnackbar();
+
+  const showSnackbarHandler = (title) => {
+    openSnackBar(`Added ${title} to cart...`);
+  };
 
   return (
     <CardWrapper>
@@ -48,7 +56,7 @@ const Card = (props) => {
           {priceOld && (
           <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
-          <ButtonContainer onClick={() => addItem({ id, name: title, price })}>
+          <ButtonContainer onClick={() => { addItem({ id, name: title, price }); showSnackbarHandler(title); }}>
             <OrderButton>ORDER</OrderButton>
           </ButtonContainer>
         </Bottom>
