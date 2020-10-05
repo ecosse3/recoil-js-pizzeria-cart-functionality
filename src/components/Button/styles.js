@@ -9,9 +9,11 @@ export const ButtonContainer = styled.div`
   background: ${props => (props.color === 'primary' ? theme.colors.primary : theme.colors.secondary)};
   border-radius: 4px;
   padding: 11px 16px 11px 18px;
+  transition: 300ms;
 
   &:hover {
     cursor: pointer;
+    background: ${props => (props.color === 'primary' ? theme.colors.primaryDark : theme.colors.secondaryDark)};
   }
 `;
 

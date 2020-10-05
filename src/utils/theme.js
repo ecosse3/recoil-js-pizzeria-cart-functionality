@@ -5,7 +5,9 @@ export const theme = {
     black: '#000000',
     white: '#FFFFFF',
     primary: '#F8593B',
+    primaryDark: '#C6472F',
     secondary: '#2ECC71',
+    secondaryDark: '#24A35A',
     deepBlue: '#081F32',
     indigoFlight: '#6E798C'
   },
