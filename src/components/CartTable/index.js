@@ -338,23 +338,30 @@ export default function EnhancedTable(props) {
                         {row.name}
                       </TableCell>
                       <TableCell align="right" padding="none">
-                        <RemoveCircleIcon
-                          onClick={() => decreaseAmount({ id: row.id, name: row.name, price: row.price })}
-                          style={{
-                            cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle', marginRight: 5
-                          }}
-                        />
-                        {row.amount} <AddCircleIcon
-                          onClick={() => increaseAmount({ id: row.id, name: row.name, price: row.price })}
-                          style={{
-                            cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle'
-                          }}
-                        />
+                        <Tooltip title="Decrease amount" placement="left">
+                          <RemoveCircleIcon
+                            onClick={() => decreaseAmount({ id: row.id, name: row.name, price: row.price })}
+                            style={{
+                              cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle', marginRight: 5
+                            }}
+                          />
+                        </Tooltip>
+                        {row.amount}
+                        <Tooltip title="Increase amount" placement="right">
+                          <AddCircleIcon
+                            onClick={() => increaseAmount({ id: row.id, name: row.name, price: row.price })}
+                            style={{
+                              cursor: 'pointer', color: appTheme.colors.primary, verticalAlign: 'middle', marginLeft: 5
+                            }}
+                          />
+                        </Tooltip>
                       </TableCell>
                       <TableCell align="right">{row.price} {currency}</TableCell>
                       <TableCell align="right">{row.total} {currency}</TableCell>
                       <TableCell padding="none">
-                        <DeleteIcon onClick={() => { checkIfProductIsSelected(row.id); removeProduct(row.id); }} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
+                        <Tooltip title="Delete" placement="right">
+                          <DeleteIcon onClick={() => { checkIfProductIsSelected(row.id); removeProduct(row.id); }} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
+                        </Tooltip>
                       </TableCell>
                     </TableRow>
                   );
