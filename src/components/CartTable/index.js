@@ -285,6 +285,12 @@ export default function EnhancedTable(props) {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
+  const checkIfProductIsSelected = (id) => {
+    if (selected.indexOf(id) !== -1) {
+      setSelected(selected.filter((productId) => productId !== id));
+    }
+  };
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -348,7 +354,7 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.price} {currency}</TableCell>
                       <TableCell align="right">{row.total} {currency}</TableCell>
                       <TableCell padding="none">
-                        <DeleteIcon onClick={() => removeProduct(row.id)} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
+                        <DeleteIcon onClick={() => { checkIfProductIsSelected(row.id); removeProduct(row.id); }} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
                       </TableCell>
                     </TableRow>
                   );
