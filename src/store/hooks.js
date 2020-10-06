@@ -24,8 +24,22 @@ export const useAddProduct = () => {
 export const useRemoveProduct = () => {
   const [products, setProducts] = useRecoilState(cart);
 
-  return (product) => {
-    setProducts(products.filter((item) => item.id !== product));
+  return (productId) => {
+    setProducts(products.filter((item) => item.id !== productId));
+  };
+};
+
+export const useRemoveMultipleProducts = () => {
+  const [products, setProducts] = useRecoilState(cart);
+
+  return (productsToRemove) => {
+    let newProducts = [...products];
+
+    productsToRemove.forEach(id => {
+      newProducts = newProducts.filter((item) => item.id !== id);
+    });
+
+    setProducts(newProducts);
   };
 };
 

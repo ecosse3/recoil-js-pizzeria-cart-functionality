@@ -20,21 +20,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { currency } from '../../utils/consts';
-import { useRemoveProduct, useAddProduct, useDecreaseProduct } from '../../store';
+import {
+  useRemoveProduct, useAddProduct, useDecreaseProduct, useRemoveMultipleProducts
+} from '../../store';
 import { theme as appTheme } from '../../utils/theme';
 
 function createData(id, name, amount, price) {
   return {
     id, name, amount, price: price.toFixed(2), total: (amount * price).toFixed(2)
   };
-}
-
-function removeSelectedFromCart(productsToRemove, remove, clearSelected) {
-  productsToRemove.forEach((id) => {
-    remove(id);
-  });
-
-  clearSelected();
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -181,7 +175,7 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 && (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => { removeSelectedFromCart(productsToRemove, remove, clearSelected); }} />
+            <DeleteIcon onClick={() => { remove(productsToRemove); clearSelected(); }} />
           </IconButton>
         </Tooltip>
       )}
@@ -232,6 +226,7 @@ export default function EnhancedTable(props) {
   const [rows, setRows] = React.useState([]);
 
   const removeProduct = useRemoveProduct();
+  const removeMultipleProducts = useRemoveMultipleProducts();
   const increaseAmount = useAddProduct();
   const decreaseAmount = useDecreaseProduct();
 
@@ -297,7 +292,7 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} productsToRemove={selected} remove={(id) => removeProduct(id)} clearSelected={() => setSelected([])} />
+        <EnhancedTableToolbar numSelected={selected.length} productsToRemove={selected} remove={() => removeMultipleProducts(selected)} clearSelected={() => setSelected([])} />
         <TableContainer>
           <Table
             className={classes.table}
