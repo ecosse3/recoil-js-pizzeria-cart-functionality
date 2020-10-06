@@ -237,10 +237,6 @@ export default function EnhancedTable(props) {
     setRows(cartItems);
   }, [products]);
 
-  React.useEffect(() => {
-    console.log('selected: ', selected);
-  }, [selected]);
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
