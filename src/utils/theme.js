@@ -6,8 +6,10 @@ export const theme = {
     white: '#FFFFFF',
     primary: '#F8593B',
     primaryDark: '#C6472F',
+    primaryOpacity: 'rgba(198,71,47,0.2)',
     secondary: '#2ECC71',
     secondaryDark: '#24A35A',
+    secondaryOpacity: 'rgba(46,204,113,0.2)',
     deepBlue: '#081F32',
     indigoFlight: '#6E798C'
   },

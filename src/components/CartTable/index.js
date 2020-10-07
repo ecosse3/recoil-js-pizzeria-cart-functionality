@@ -101,6 +101,7 @@ function EnhancedTableHead(props) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
+            style={{ color: appTheme.colors.primary }}
             inputProps={{ 'aria-label': 'select all products' }}
             onMouseUp={() => {
               rowCount > 0 && numSelected === rowCount ? playOff() : playOn();
@@ -152,8 +153,8 @@ const useToolbarStyles = makeStyles((theme) => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-        color: theme.palette.secondary.main,
-        backgroundColor: lighten(theme.palette.secondary.light, 0.85)
+        color: appTheme.colors.primary,
+        backgroundColor: appTheme.colors.primaryOpacity
       }
       : {
         color: theme.palette.text.primary,
@@ -227,6 +228,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: 20,
     width: 1
+  },
+  tableRow: {
+    '&.Mui-selected, &.Mui-selected:hover': {
+      backgroundColor: appTheme.colors.primaryOpacity
+    }
   }
 }));
 
@@ -347,12 +353,14 @@ export default function EnhancedTable(props) {
                       tabIndex={-1}
                       key={row.name}
                       selected={isItemSelected}
+                      className={classes.tableRow}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                           onClick={(event) => handleClick(event, row.id)}
+                          style={{ color: appTheme.colors.primary }}
                           onMouseUp={() => {
                             isItemSelected ? playOff() : playOn();
                           }}
