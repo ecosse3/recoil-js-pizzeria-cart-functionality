@@ -2,6 +2,7 @@ import Card1 from '../assets/images/card1.png';
 import Card2 from '../assets/images/card2.png';
 import Card3 from '../assets/images/card3.png';
 import Card4 from '../assets/images/card4.png';
+import Card5 from '../assets/images/card5.jpg';
 
 const data = [
   {
@@ -34,10 +35,19 @@ const data = [
   {
     id: 4,
     image: Card4,
-    title: 'Chefs Pizza',
-    description: 'Premium pepperoni and cheese is made with real mozzarella on original hand-tossed crust.',
+    title: 'Chef\'s Pizza',
+    description: 'Home-made pizza from the chef\'s bakery on a thick and fluffy dough. Secret ingredients of the boss will make you remember him for a long time.',
     price: 27.90,
-    icons: ['wheat']
+    icons: ['hot', 'wheat']
+  },
+  {
+    dii: 4,
+    image: Card5,
+    title: 'Mama\'s Dough',
+    description: 'Bake some love with our best of the best dough in Italy! It is like a drug. When you buy once, you keep coming back for more.',
+    price: 8.90,
+    priceOld: 10.90,
+    icons: ['vege', 'wheat']
   }
 ];
 
