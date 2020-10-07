@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import { useRecoilValue } from 'recoil';
 import { cartState } from '../../store';
 
-import { Container } from './styles';
+import { Container, LogoWrapper } from './styles';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import Button from '../Button';
 
@@ -18,7 +18,9 @@ const Header = () => {
         <Row between="xs" middle="xs">
           <Col>
             <Link to="/">
-              <Logo />
+              <LogoWrapper>
+                <Logo />
+              </LogoWrapper>
             </Link>
           </Col>
           <Col>
