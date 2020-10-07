@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-export const cart = atom({
-  key: 'cart',
+export const cartState = atom({
+  key: 'cartState',
   default: []
 });
 

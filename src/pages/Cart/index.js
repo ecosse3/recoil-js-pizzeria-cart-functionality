@@ -7,11 +7,11 @@ import { Container } from './styles';
 import Hero from '../../components/Hero';
 import { Heading } from '../../utils/typography';
 import CartTable from '../../components/CartTable';
-import { cart, cartState } from '../../store';
+import { cartState, cartSelector } from '../../store';
 
 const Cart = () => {
-  const cartItems = useRecoilValue(cart);
-  const { totalCost, totalQty } = useRecoilValue(cartState);
+  const cartItems = useRecoilValue(cartState);
+  const { totalCost, totalQty } = useRecoilValue(cartSelector);
 
   return (
     <>

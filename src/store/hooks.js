@@ -1,15 +1,19 @@
 import { useRecoilState } from 'recoil';
 import useSound from 'use-sound';
-import { cart, selectedProductsState } from './atoms';
+import { cartState, selectedProductsState } from './atoms';
 import trashSfx from '../assets/sfx/trash.mp3';
+
+// Utility functions
 
 const cloneIndex = (items, id) => ({
   clone: items.map((product) => ({ ...product })),
   index: items.findIndex((product) => product.id === id)
 });
 
+// Hooks
+
 export const useAddProduct = () => {
-  const [products, setProducts] = useRecoilState(cart);
+  const [products, setProducts] = useRecoilState(cartState);
 
   return (product) => {
     const { clone, index } = cloneIndex(products, product.id);
@@ -24,7 +28,7 @@ export const useAddProduct = () => {
 };
 
 export const useRemoveProduct = () => {
-  const [products, setProducts] = useRecoilState(cart);
+  const [products, setProducts] = useRecoilState(cartState);
 
   return (productId) => {
     setProducts(products.filter((item) => item.id !== productId));
@@ -32,7 +36,7 @@ export const useRemoveProduct = () => {
 };
 
 export const useRemoveMultipleProducts = () => {
-  const [products, setProducts] = useRecoilState(cart);
+  const [products, setProducts] = useRecoilState(cartState);
 
   return (productsToRemove) => {
     let newProducts = [...products];
@@ -46,7 +50,7 @@ export const useRemoveMultipleProducts = () => {
 };
 
 export const useDecreaseProduct = () => {
-  const [products, setProducts] = useRecoilState(cart);
+  const [products, setProducts] = useRecoilState(cartState);
   const [selected, setSelected] = useRecoilState(selectedProductsState);
   const removeProduct = useRemoveProduct();
   const [playRemoveSound] = useSound(trashSfx, { volume: 0.25 });

@@ -1,5 +1,5 @@
-export { cart, selectedProductsState } from './atoms';
-export { cartState } from './selectors';
+export { cartState, selectedProductsState } from './atoms';
+export { cartSelector } from './selectors';
 export {
   useAddProduct, useRemoveProduct, useDecreaseProduct, useRemoveMultipleProducts
 } from './hooks';

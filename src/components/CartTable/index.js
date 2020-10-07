@@ -429,3 +429,9 @@ export default function EnhancedTable(props) {
     </div>
   );
 }
+
+EnhancedTable.propTypes = {
+  products: PropTypes.array.isRequired,
+  totalCost: PropTypes.number.isRequired,
+  totalQty: PropTypes.number.isRequired
+};
