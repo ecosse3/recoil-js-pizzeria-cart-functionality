@@ -19,11 +19,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import useSound from 'use-sound';
 import { currency } from '../../utils/consts';
 import {
   useRemoveProduct, useAddProduct, useDecreaseProduct, useRemoveMultipleProducts
 } from '../../store';
 import { theme as appTheme } from '../../utils/theme';
+import popDownSfx from '../../assets/sfx/pop-down.mp3';
+import popUpOnSfx from '../../assets/sfx/pop-up-on.mp3';
+import popUpOffSfx from '../../assets/sfx/pop-up-off.mp3';
 
 function createData(id, name, amount, price) {
   return {
@@ -79,6 +83,11 @@ function EnhancedTableHead(props) {
   const {
     classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort
   } = props;
+
+  const [playActive] = useSound(popDownSfx, { volume: 0.25 });
+  const [playOn] = useSound(popUpOnSfx, { volume: 0.25 });
+  const [playOff] = useSound(popUpOffSfx, { volume: 0.25 });
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -92,6 +101,10 @@ function EnhancedTableHead(props) {
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ 'aria-label': 'select all products' }}
+            onMouseUp={() => {
+              rowCount > 0 && numSelected === rowCount ? playOff() : playOn();
+            }}
+            onMouseDown={playActive}
           />
         </TableCell>
         {headCells.map((headCell) => (
@@ -225,6 +238,10 @@ export default function EnhancedTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [rows, setRows] = React.useState([]);
 
+  const [playActive] = useSound(popDownSfx, { volume: 0.25 });
+  const [playOn] = useSound(popUpOnSfx, { volume: 0.25 });
+  const [playOff] = useSound(popUpOffSfx, { volume: 0.25 });
+
   const removeProduct = useRemoveProduct();
   const removeMultipleProducts = useRemoveMultipleProducts();
   const increaseAmount = useAddProduct();
@@ -332,6 +349,10 @@ export default function EnhancedTable(props) {
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                           onClick={(event) => handleClick(event, row.id)}
+                          onMouseUp={() => {
+                            isItemSelected ? playOff() : playOn();
+                          }}
+                          onMouseDown={playActive}
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
