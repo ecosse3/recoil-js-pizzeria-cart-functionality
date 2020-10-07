@@ -20,9 +20,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import useSound from 'use-sound';
+import { useRecoilState } from 'recoil';
 import { currency } from '../../utils/consts';
 import {
-  useRemoveProduct, useAddProduct, useDecreaseProduct, useRemoveMultipleProducts
+  useRemoveProduct, useAddProduct, useDecreaseProduct, useRemoveMultipleProducts, selectedProductsState
 } from '../../store';
 import { theme as appTheme } from '../../utils/theme';
 import popDownSfx from '../../assets/sfx/pop-down.mp3';
@@ -240,9 +241,10 @@ export default function EnhancedTable(props) {
   const { products, totalCost, totalQty } = props;
 
   const classes = useStyles();
+  const [selected, setSelected] = useRecoilState(selectedProductsState);
+
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
-  const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [rows, setRows] = React.useState([]);

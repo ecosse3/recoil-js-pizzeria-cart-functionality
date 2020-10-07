@@ -5,6 +5,11 @@ export const cart = atom({
   default: []
 });
 
+export const selectedProductsState = atom({
+  key: 'selectedProductsState',
+  default: []
+});
+
 export const snackbarMessage = atom({
   key: 'snackbarMessage',
   default: null
