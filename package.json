@@ -22,7 +22,8 @@
     "recoil": "0.0.13",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "use-sound": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

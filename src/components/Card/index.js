@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import useSound from 'use-sound';
 import { currency } from '../../utils/consts';
-
+import addToCartSfx from '../../assets/sfx/add-to-cart.mp3';
 
 import {
   Bottom,
@@ -32,6 +33,7 @@ const Card = (props) => {
 
   const addProduct = useAddProduct();
   const { openSnackBar } = useSnackbar();
+  const [playSound] = useSound(addToCartSfx);
 
   const showSnackbarHandler = () => {
     openSnackBar(`Added ${title} to cart...`);
@@ -56,7 +58,7 @@ const Card = (props) => {
           {priceOld && (
           <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
-          <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); showSnackbarHandler(); }}>
+          <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); playSound(); showSnackbarHandler(); }}>
             <OrderButton>ORDER</OrderButton>
           </ButtonContainer>
         </Bottom>
