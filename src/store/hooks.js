@@ -1,5 +1,7 @@
 import { useRecoilState } from 'recoil';
+import useSound from 'use-sound';
 import { cart } from './atoms';
+import trashSfx from '../assets/sfx/trash.mp3';
 
 const cloneIndex = (items, id) => ({
   clone: items.map((product) => ({ ...product })),
@@ -46,11 +48,13 @@ export const useRemoveMultipleProducts = () => {
 export const useDecreaseProduct = () => {
   const [products, setProducts] = useRecoilState(cart);
   const removeProduct = useRemoveProduct();
+  const [playRemoveSound] = useSound(trashSfx, { volume: 0.25 });
 
   return (product) => {
     const { clone, index } = cloneIndex(products, product.id);
 
     if (clone[index].amount === 1) {
+      playRemoveSound();
       removeProduct(product.id);
     } else {
       clone[index].amount -= 1;

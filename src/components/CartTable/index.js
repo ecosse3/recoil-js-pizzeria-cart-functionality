@@ -28,6 +28,7 @@ import { theme as appTheme } from '../../utils/theme';
 import popDownSfx from '../../assets/sfx/pop-down.mp3';
 import popUpOnSfx from '../../assets/sfx/pop-up-on.mp3';
 import popUpOffSfx from '../../assets/sfx/pop-up-off.mp3';
+import trashSfx from '../../assets/sfx/trash.mp3';
 
 function createData(id, name, amount, price) {
   return {
@@ -169,6 +170,8 @@ const EnhancedTableToolbar = (props) => {
     numSelected, productsToRemove, remove, clearSelected
   } = props;
 
+  const [playRemoveSound] = useSound(trashSfx, { volume: 0.25 });
+
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -188,7 +191,7 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 && (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => { remove(productsToRemove); clearSelected(); }} />
+            <DeleteIcon onClick={() => { remove(productsToRemove); playRemoveSound(); clearSelected(); }} />
           </IconButton>
         </Tooltip>
       )}
@@ -241,6 +244,7 @@ export default function EnhancedTable(props) {
   const [playActive] = useSound(popDownSfx, { volume: 0.25 });
   const [playOn] = useSound(popUpOnSfx, { volume: 0.25 });
   const [playOff] = useSound(popUpOffSfx, { volume: 0.25 });
+  const [playRemoveSound] = useSound(trashSfx, { volume: 0.25 });
 
   const removeProduct = useRemoveProduct();
   const removeMultipleProducts = useRemoveMultipleProducts();
@@ -381,7 +385,7 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.total} {currency}</TableCell>
                       <TableCell padding="none">
                         <Tooltip title="Delete" placement="right">
-                          <DeleteIcon onClick={() => { checkIfProductIsSelected(row.id); removeProduct(row.id); }} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
+                          <DeleteIcon onClick={() => { checkIfProductIsSelected(row.id); removeProduct(row.id); playRemoveSound(); }} style={{ cursor: 'pointer', color: appTheme.colors.primary, marginTop: 5 }} />
                         </Tooltip>
                       </TableCell>
                     </TableRow>

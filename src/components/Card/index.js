@@ -33,7 +33,7 @@ const Card = (props) => {
 
   const addProduct = useAddProduct();
   const { openSnackBar } = useSnackbar();
-  const [playSound] = useSound(addToCartSfx, { volume: 0.25 });
+  const [playSound] = useSound(addToCartSfx, { volume: 0.15 });
 
   const showSnackbarHandler = () => {
     openSnackBar(`Added ${title} to cart...`);
