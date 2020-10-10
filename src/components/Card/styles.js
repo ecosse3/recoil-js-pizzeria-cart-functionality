@@ -19,7 +19,7 @@ export const CardWrapper = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  display: inline-block;
+  display: inline-flex;
   padding-left: 15px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -42,8 +42,10 @@ export const IconsWrapper = styled.div`
 `;
 
 export const Bottom = styled.div`
-  justify-self: flex-end;
-  padding-bottom: 40px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 24px 40px 24px;
 `;
 
 export const CardContentWrapper = styled.div`
@@ -108,7 +110,6 @@ export const Price = styled.div`
   font-size: 28px;
   font-weight: 400;
   color: ${theme.colors.deepBlue};
-  padding-left: 24px;
 `;
 
 export const PriceOld = styled.div`
@@ -147,4 +148,55 @@ export const Icon = styled.div`
   width: 24px;
   height: 24px;
   margin-left: 5px;
+`;
+
+export const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  top: 16px;
+  left: 30px;
+  width: 230px;
+  min-height: 160px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  animation: 0.2s fadeIn;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 14px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #FFF;
+    transform: rotate(-90deg);
+    clear: both;
+  }
+`;
+
+export const InfoBoxTitleContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding: 5px 16px;
+  border-bottom: 1px solid #D9D9D9;
+`;
+
+export const InfoBoxTitle = styled.h1`
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+export const InfoBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+`;
+
+export const Ingredient = styled.span`
+  font-size: 12px;
 `;

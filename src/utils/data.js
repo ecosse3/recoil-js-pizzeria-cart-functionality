@@ -12,7 +12,8 @@ const data = [
     description: 'Premium pepperoni and cheese is made with real mozzarella on original hand-tossed crust.',
     price: 23.90,
     priceOld: 29.90,
-    icons: ['hot', 'wheat']
+    icons: ['hot', 'wheat'],
+    ingredients: ['Mozzarella', 'Pepperoni']
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ const data = [
     description: 'Pasta stuffed with beef and pork topped with your choice of cream sauce with bacon, bolognese or marinara sauce.',
     price: 17.90,
     priceOld: 22.90,
-    icons: ['vege', 'hot', 'wheat']
+    icons: ['vege', 'hot', 'wheat'],
+    ingredients: ['Beef', 'Pork', 'Cream sauce', 'Bacon', 'Bolognese/Marinara sauce']
   },
   {
     id: 3,
@@ -30,15 +32,17 @@ const data = [
     description: 'Three layer strawberry dessert is not only beautiful looking, but also delicious! Perfect dessert for spring and summer.',
     price: 13.90,
     priceOld: 18.90,
-    icons: ['wheat']
+    icons: ['wheat'],
+    ingredients: ['Strawberries', 'Pancakes', 'Sour Cream', 'Sugar']
   },
   {
     id: 4,
     image: Card4,
     title: 'Chef\'s Pizza',
-    description: 'Home-made pizza from the chef\'s bakery on a thick and fluffy dough. Secret ingredients of the boss will make you remember him for a long time.',
+    description: 'Home-made pizza from the chef\'s bakery on a fluffy dough. Secret ingredients of the boss will make you remember him for a long time.',
     price: 27.90,
-    icons: ['hot', 'wheat']
+    icons: ['hot', 'wheat'],
+    ingredients: ['Mozzarella', 'A lot of secrets']
   },
   {
     dii: 4,
@@ -47,7 +51,8 @@ const data = [
     description: 'Bake some love with our best of the best dough in Italy! It is like a drug. When you buy once, you keep coming back for more.',
     price: 8.90,
     priceOld: 10.90,
-    icons: ['vege', 'wheat']
+    icons: ['vege', 'wheat'],
+    ingredients: ['Dough']
   }
 ];
 

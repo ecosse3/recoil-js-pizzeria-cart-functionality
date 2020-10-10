@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useSound from 'use-sound';
@@ -12,15 +12,20 @@ import {
   CardWrapper,
   Description,
   Icon,
+  IconsWrapper,
   Image,
   Info,
+  InfoBox,
+  InfoBoxContainer,
+  InfoBoxTitle,
+  InfoBoxTitleContainer,
+  Ingredient,
   OrderButton,
   Price,
   PriceOld,
   Title,
   Top,
-  TopData,
-  IconsWrapper
+  TopData
 } from './styles';
 
 import { useAddProduct } from '../../store';
@@ -28,9 +33,10 @@ import { useSnackbar } from '../../hooks/useSnackbar';
 
 const Card = (props) => {
   const {
-    id, image, title, icons, description, price, priceOld
+    id, image, title, icons, description, price, priceOld, ingredients
   } = props;
 
+  const [toggleInfoBox, setToggleInfoBox] = useState(false);
   const addProduct = useAddProduct();
   const { openSnackBar } = useSnackbar();
   const [playSound] = useSound(addToCartSfx, { volume: 0.15 });
@@ -41,8 +47,20 @@ const Card = (props) => {
 
   return (
     <CardWrapper>
+      {toggleInfoBox && (
+        <InfoBox>
+          <InfoBoxTitleContainer>
+            <InfoBoxTitle>Ingredients:</InfoBoxTitle>
+          </InfoBoxTitleContainer>
+          <InfoBoxContainer>
+            {ingredients?.map(ingredient => (
+              <Ingredient>{ingredient}</Ingredient>
+            ))}
+          </InfoBoxContainer>
+        </InfoBox>
+      )}
       <Image src={image} />
-      <Info onClick={() => console.log('click')} />
+      <Info onClick={() => setToggleInfoBox(!toggleInfoBox)} />
       <CardContentWrapper>
         <Top>
           <TopData>
