@@ -67,7 +67,7 @@ const Card = (props) => {
         </InfoBox>
       )}
       <Image src={image} />
-      <Info onClick={() => setToggleInfoBox(!toggleInfoBox)} />
+      <Info onClick={() => setToggleInfoBox(toggle => !toggle)} />
       <CardContentWrapper>
         <Top>
           <TopData>
