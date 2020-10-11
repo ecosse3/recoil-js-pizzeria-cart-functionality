@@ -4,3 +4,5 @@
 Simple pizza shop with cart functionality written in React with Recoil.js for educational purpose
 
 **Live demo:** https://recoil-js-pizzeria-463.netlify.app/
+
+![Demo](demo.png)
