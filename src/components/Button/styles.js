@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 import { FiShoppingCart } from 'react-icons/fi';
-import { theme } from '../../utils/theme';
 
 export const ButtonContainer = styled.div`
   display: block;
   position: relative;
-  color: ${theme.colors.white};
-  background: ${props => (props.color === 'primary' ? theme.colors.primary : theme.colors.secondary)};
+  color: ${({ theme }) => theme.colors.white};
+  background: ${props => (props.color === 'primary' ? props.theme.colors.primary : props.theme.colors.secondary)};
   border-radius: 4px;
   padding: 11px 16px 11px 18px;
   transition: 300ms;
 
   &:hover {
     cursor: pointer;
-    background: ${props => (props.color === 'primary' ? theme.colors.primaryDark : theme.colors.secondaryDark)};
+    background: ${props => (props.color === 'primary' ? props.theme.colors.primaryDark : props.theme.colors.secondaryDark)};
   }
 `;
 

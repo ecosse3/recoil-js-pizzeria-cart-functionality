@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '../../utils/theme';
 import InfoSVG from '../../assets/svg/info.svg';
 import VegeSVG from '../../assets/svg/vege_icon.svg';
 import HotSVG from '../../assets/svg/hot_icon.svg';
@@ -11,7 +10,7 @@ export const CardWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: ${theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
   width: 330px;
   height: 510px;
@@ -69,7 +68,7 @@ export const Info = styled.div`
   top: 16px;
   right: 24px;
   width: 32px;
-  height: 32px; border-radius: 50%; background-color: ${theme.colors.white};
+  height: 32px; border-radius: 50%; background-color: ${({ theme }) => theme.colors.white};
   transition: 400ms;
 
   &:hover {
@@ -91,7 +90,7 @@ export const Title = styled.div`
   font-family: 'DM Serif Display';
   font-size: 24px;
   font-weight: 400;
-  color: ${theme.colors.deepBlue};
+  color: ${({ theme }) => theme.colors.deepBlue};
   line-height: 1.05;
 `;
 
@@ -100,7 +99,7 @@ export const Description = styled.div`
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.56;
-  color: ${theme.colors.indigoFlight};
+  color: ${({ theme }) => theme.colors.indigoFlight};
   padding: 32px 24px;
 `;
 
@@ -109,7 +108,7 @@ export const Price = styled.div`
   font-family: 'DM Serif Display';
   font-size: 28px;
   font-weight: 400;
-  color: ${theme.colors.deepBlue};
+  color: ${({ theme }) => theme.colors.deepBlue};
 `;
 
 export const PriceOld = styled.div`
@@ -117,7 +116,7 @@ export const PriceOld = styled.div`
   font-family: 'DM Serif Display';
   font-size: 20px;
   font-weight: 400;
-  color: ${theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   padding-left: 8px;
   text-decoration: line-through;
 `;
