@@ -13,7 +13,7 @@ const Footer = () => {
       <Grid>
         <Row center="xs">
           <Col>
-            <a href="https://github.com/ecosse3" target="_blank">
+            <a href="https://github.com/ecosse3" rel="noopener noreferrer" target="_blank">
               <FooterText isMobile={isMobile}>Copyright {new Date().getFullYear()}. Made by Ecosse3</FooterText>
             </a>
           </Col>
