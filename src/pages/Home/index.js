@@ -20,11 +20,31 @@ const Home = () => {
   const settings = {
     dots: false,
     infinite: false,
+    draggable: false,
+    swipeToSlide: false,
     speed: 500,
-    slidesToShow: isMobile ? 1 : 3,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <SliderArrow next />,
-    prevArrow: <SliderArrow prev />
+    nextArrow: !isMobile && <SliderArrow next />,
+    prevArrow: !isMobile && <SliderArrow prev />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          swipeToSlide: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipeToSlide: true
+        }
+      }
+    ]
   };
 
   return (

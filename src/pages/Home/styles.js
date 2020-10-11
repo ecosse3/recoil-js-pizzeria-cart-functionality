@@ -22,9 +22,18 @@ export const SliderWrapper = styled.div`
     margin-left: 0px;
   }
 
+  .slick-slide {
+    transition: 0.2s;
+    opacity: 0;
+  }
+
   .slick-slide .drop-shadow {
     box-shadow: none;
     transition: box-shadow 0.1s easy-in-out;
+  }
+
+  .slick-slide.slick-active {
+    opacity: 1;
   }
 
   .slick-slide.slick-active .drop-shadow {
