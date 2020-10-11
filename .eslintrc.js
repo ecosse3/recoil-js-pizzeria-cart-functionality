@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'react-hooks'
   ],
   rules: {
     "arrow-parens": 0,
@@ -45,6 +46,6 @@ module.exports = {
     "react/prop-types": "warn",
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
-    "react/destructuring-assignment": 0,
+    "react/destructuring-assignment": 0
   },
 };

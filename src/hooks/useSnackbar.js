@@ -12,7 +12,7 @@ export const useSnackbar = () => {
         setIsActive(false);
       }, 1500);
     }
-  }, [isActive]);
+  }, [isActive, setIsActive]);
 
   const openSnackBar = (msg = 'Something went wrong...') => {
     setMessage(msg);

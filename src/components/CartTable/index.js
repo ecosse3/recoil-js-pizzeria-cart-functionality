@@ -264,6 +264,7 @@ export default function EnhancedTable(props) {
   React.useEffect(() => {
     products.map(product => cartItems.push(createData(product.id, product.name, product.amount, product.price)));
     setRows(cartItems);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   const handleRequestSort = (event, property) => {

@@ -33,7 +33,14 @@ import { useSnackbar } from '../../hooks/useSnackbar';
 
 const Card = (props) => {
   const {
-    id, image, title, icons, description, price, priceOld, ingredients
+    description,
+    icons,
+    id,
+    image,
+    ingredients,
+    price,
+    priceOld,
+    title
   } = props;
 
   const [toggleInfoBox, setToggleInfoBox] = useState(false);
@@ -86,13 +93,14 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
+  description: PropTypes.string.isRequired,
+  icons: PropTypes.arrayOf(PropTypes.string),
   id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  icons: PropTypes.arrayOf(PropTypes.string),
-  description: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string),
   price: PropTypes.number.isRequired,
-  priceOld: PropTypes.number
+  priceOld: PropTypes.number,
+  title: PropTypes.string.isRequired
 };
 
 export default Card;
