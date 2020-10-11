@@ -192,8 +192,8 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 && (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => { remove(productsToRemove); playRemoveSound(); clearSelected(); }} />
+          <IconButton aria-label="delete" onClick={() => { remove(productsToRemove); playRemoveSound(); clearSelected(); }}>
+            <DeleteIcon />
           </IconButton>
         </Tooltip>
       )}
@@ -407,10 +407,10 @@ export default function EnhancedTable(props) {
                 </TableRow>
               )}
               <TableRow>
-                <TableCell colSpan={2}>Total</TableCell>
-                <TableCell align="right">{totalQty > 0 && totalQty}</TableCell>
+                <TableCell style={{ fontWeight: 'bold' }} colSpan={2}>Total</TableCell>
+                <TableCell style={{ fontWeight: 'bold' }} align="right">{totalQty > 0 && totalQty}</TableCell>
                 <TableCell />
-                <TableCell align="right">{totalCost.toFixed(2)} {currency}</TableCell>
+                <TableCell style={{ fontWeight: 'bold' }} align="right">{totalCost.toFixed(2)} {currency}</TableCell>
                 <TableCell />
               </TableRow>
             </TableBody>
