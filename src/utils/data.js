@@ -13,7 +13,7 @@ const data = [
     price: 23.90,
     priceOld: 29.90,
     icons: ['hot', 'wheat'],
-    ingredients: ['Mozzarella', 'Pepperoni']
+    ingredients: ['🧀 Mozzarella', '🌶️ Pepperoni']
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const data = [
     price: 17.90,
     priceOld: 22.90,
     icons: ['vege', 'hot', 'wheat'],
-    ingredients: ['Beef', 'Pork', 'Cream sauce', 'Bacon', 'Bolognese/Marinara sauce']
+    ingredients: ['🍖 Beef', '🥩 Pork', '🍦 Cream sauce', '🥓 Bacon', '🍝 Bolognese/Marinara sauce']
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const data = [
     price: 13.90,
     priceOld: 18.90,
     icons: ['wheat'],
-    ingredients: ['Strawberries', 'Pancakes', 'Sour Cream', 'Sugar']
+    ingredients: ['🍓 Strawberries', '🥞 Pancakes', ' 🍦Sour Cream', '🍡 Sugar']
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const data = [
     description: 'Home-made pizza from the chef\'s bakery on a fluffy dough. Secret ingredients of the boss will make you remember him for a long time.',
     price: 27.90,
     icons: ['hot', 'wheat'],
-    ingredients: ['Mozzarella', 'A lot of secrets']
+    ingredients: ['🧀 Mozzarella', '😯 A lot of secrets']
   },
   {
     dii: 4,
@@ -52,7 +52,7 @@ const data = [
     price: 8.90,
     priceOld: 10.90,
     icons: ['vege', 'wheat'],
-    ingredients: ['Dough']
+    ingredients: ['🍕 Pizza Dough']
   }
 ];
 
