@@ -8,11 +8,11 @@ import { ThemeProvider } from 'styled-components';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { theme } from '@theme';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { theme } from './utils/theme';
 import { useSnackbar } from './hooks';
 
 function App() {

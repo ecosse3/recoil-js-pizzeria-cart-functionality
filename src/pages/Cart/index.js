@@ -2,12 +2,12 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
 import { useRecoilValue } from 'recoil';
-import { Container } from './styles';
+import { cartState, cartSelector } from '@store';
 
-import Hero from '../../components/Hero';
-import { Heading } from '../../utils/typography';
-import CartTable from '../../components/CartTable';
-import { cartState, cartSelector } from '../../store';
+import Hero from '@/components/Hero';
+import CartTable from '@/components/CartTable';
+import { Heading } from '@/utils/typography';
+import { Container } from './styles';
 
 const Cart = () => {
   const cartItems = useRecoilValue(cartState);

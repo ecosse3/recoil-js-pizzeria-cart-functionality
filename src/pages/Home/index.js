@@ -2,14 +2,12 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
 import Slider from 'react-slick';
+import { useIsMobile } from '@theme';
+import data from '@/utils/data';
+import { Heading } from '@/utils/typography';
 import Hero from '../../components/Hero';
 import Card from '../../components/Card';
 import SliderArrow from '../../components/SliderArrow';
-
-import data from '../../utils/data';
-
-import { Heading } from '../../utils/typography';
-import { useIsMobile } from '../../utils/theme';
 
 import { SliderSection, SliderWrapper } from './styles';
 

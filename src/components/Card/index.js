@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useSound from 'use-sound';
-import { currency } from '../../utils/consts';
-import addToCartSfx from '../../assets/sfx/add-to-cart.mp3';
+import { useAddProduct } from '@store';
+import { useSnackbar } from '@/hooks/useSnackbar';
+import { currency } from '@/utils/consts';
+import addToCartSfx from '@/assets/sfx/add-to-cart.mp3';
 
 import {
   Bottom,
@@ -27,9 +29,6 @@ import {
   Top,
   TopData
 } from './styles';
-
-import { useAddProduct } from '../../store';
-import { useSnackbar } from '../../hooks/useSnackbar';
 
 const Card = (props) => {
   const {

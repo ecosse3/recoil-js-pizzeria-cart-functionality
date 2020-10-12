@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { theme } from '@theme';
 import {
   space,
   lineHeight,
@@ -15,8 +16,6 @@ import {
   letterSpacing,
   borderRadius
 } from 'styled-system';
-
-import { theme } from './theme';
 
 const { heading } = theme.textStyles;
 

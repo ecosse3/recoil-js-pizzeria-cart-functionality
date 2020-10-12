@@ -21,11 +21,11 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import useSound from 'use-sound';
 import { useRecoilState } from 'recoil';
-import { currency } from '../../utils/consts';
+import { theme as appTheme } from '@theme';
 import {
   useRemoveProduct, useAddProduct, useDecreaseProduct, useRemoveMultipleProducts, selectedProductsState
-} from '../../store';
-import { theme as appTheme } from '../../utils/theme';
+} from '@store';
+import { currency } from '../../utils/consts';
 import popDownSfx from '../../assets/sfx/pop-down.mp3';
 import popUpOnSfx from '../../assets/sfx/pop-up-on.mp3';
 import popUpOffSfx from '../../assets/sfx/pop-up-off.mp3';

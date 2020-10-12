@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { snackbarIsActive, snackbarMessage } from '../store/atoms';
+import { snackbarIsActive, snackbarMessage } from '@store/atoms';
 
 export const useSnackbar = () => {
   const [isActive, setIsActive] = useRecoilState(snackbarIsActive);

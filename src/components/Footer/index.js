@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
-import { useIsMobile } from '../../utils/theme';
+import { useIsMobile } from '@theme';
 
 import { Container, FooterText } from './styles';
 

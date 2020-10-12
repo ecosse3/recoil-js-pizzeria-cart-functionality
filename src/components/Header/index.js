@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
 import { useRecoilValue } from 'recoil';
-import { cartSelector } from '../../store';
+import { cartSelector } from '@store';
 
 import { Container, LogoWrapper } from './styles';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
