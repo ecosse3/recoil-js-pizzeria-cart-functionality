@@ -6,6 +6,9 @@ import { useAddProduct } from '@store';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { currency } from '@/utils/consts';
 import addToCartSfx from '@/assets/sfx/add-to-cart.mp3';
+import popDownSfx from '@/assets/sfx/pop-down.mp3';
+import popUpOnSfx from '@/assets/sfx/pop-up-on.mp3';
+import popUpOffSfx from '@/assets/sfx/pop-up-off.mp3';
 
 import {
   Bottom,
@@ -45,7 +48,10 @@ const Card = (props) => {
   const [toggleInfoBox, setToggleInfoBox] = useState(false);
   const addProduct = useAddProduct();
   const { openSnackBar } = useSnackbar();
-  const [playSound] = useSound(addToCartSfx, { volume: 0.15 });
+  const [playAddToCart] = useSound(addToCartSfx, { volume: 0.15 });
+  const [playActive] = useSound(popDownSfx, { volume: 0.25 });
+  const [playOn] = useSound(popUpOnSfx, { volume: 0.25 });
+  const [playOff] = useSound(popUpOffSfx, { volume: 0.25 });
 
   const showSnackbarHandler = () => {
     openSnackBar(`Added ${title} to cart...`);
@@ -66,7 +72,7 @@ const Card = (props) => {
         </InfoBox>
       )}
       <Image src={image} />
-      <Info onClick={() => setToggleInfoBox(toggle => !toggle)} />
+      <Info onClick={() => { setToggleInfoBox(toggle => !toggle); toggleInfoBox ? playOff() : playOn(); }} onMouseDown={() => playActive()} />
       <CardContentWrapper>
         <Top>
           <TopData>
@@ -82,7 +88,7 @@ const Card = (props) => {
           {priceOld && (
           <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
-          <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); playSound(); showSnackbarHandler(); }}>
+          <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); playAddToCart(); showSnackbarHandler(); }}>
             <OrderButton>ORDER</OrderButton>
           </ButtonContainer>
         </Bottom>
