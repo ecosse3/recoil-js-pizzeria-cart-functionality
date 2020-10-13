@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
+import { useIsMobile } from '@theme';
 import { useRecoilValue } from 'recoil';
 import { cartState, cartSelector } from '@store';
 
@@ -13,10 +14,12 @@ const Cart = () => {
   const cartItems = useRecoilValue(cartState);
   const { totalCost, totalQty } = useRecoilValue(cartSelector);
 
+  const isMobile = useIsMobile();
+
   return (
     <>
       <Hero />
-      <Container>
+      <Container isMobile={isMobile}>
         <Grid>
           <Row center="xs">
             <Col>

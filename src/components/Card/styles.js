@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
 import InfoSVG from '../../assets/svg/info.svg';
 import VegeSVG from '../../assets/svg/vege_icon.svg';
 import HotSVG from '../../assets/svg/hot_icon.svg';
@@ -12,9 +13,12 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
-  width: 330px;
+  width: ${props => (props.isMobile ? '310px' : '330px')};
   height: 510px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  ${props => !props.isMobile && css`
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  `}
 `;
 
 export const ButtonContainer = styled.div`
@@ -106,7 +110,7 @@ export const Description = styled.div`
 export const Price = styled.div`
   display: inline-block;
   font-family: 'DM Serif Display';
-  font-size: 28px;
+  font-size: ${props => (props.isMobile ? '20px' : '28px')};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.deepBlue};
 `;
@@ -114,7 +118,7 @@ export const Price = styled.div`
 export const PriceOld = styled.div`
   display: inline-block;
   font-family: 'DM Serif Display';
-  font-size: 20px;
+  font-size: ${props => (props.isMobile ? '16px' : '20px')};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primary};
   padding-left: 8px;
@@ -156,7 +160,7 @@ export const InfoBox = styled.div`
   z-index: 10;
   top: 16px;
   left: 30px;
-  width: 230px;
+  width: ${props => (props.isMobile ? '210px' : '230px')};
   min-height: 160px;
   background: #FFFFFF;
   border-radius: 4px;

@@ -31,7 +31,8 @@ const Home = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          swipeToSlide: true
+          swipeToSlide: true,
+          arrows: false
         }
       },
       {
@@ -39,7 +40,8 @@ const Home = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          swipeToSlide: true
+          swipeToSlide: true,
+          arrows: false
         }
       }
     ]
@@ -56,7 +58,7 @@ const Home = () => {
             </Col>
           </Row>
           <Row>
-            <SliderWrapper>
+            <SliderWrapper isMobile={isMobile}>
               <Slider {...settings}>
                 {data?.map((product) => (
                   <Card key={product.id} id={product.id} image={product.image} title={product.title} description={product.description} price={product.price} priceOld={product.priceOld} icons={product.icons} ingredients={product.ingredients} />

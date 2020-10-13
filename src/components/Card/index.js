@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useSound from 'use-sound';
+import { useIsMobile } from '@theme';
 import { useAddProduct } from '@store';
 import { useSnackbar } from '@/hooks/useSnackbar';
 import { currency } from '@/utils/consts';
@@ -53,14 +54,16 @@ const Card = (props) => {
   const [playOn] = useSound(popUpOnSfx, { volume: 0.25 });
   const [playOff] = useSound(popUpOffSfx, { volume: 0.25 });
 
+  const isMobile = useIsMobile();
+
   const showSnackbarHandler = () => {
     openSnackBar(`Added ${title} to cart...`);
   };
 
   return (
-    <CardWrapper>
+    <CardWrapper isMobile={isMobile}>
       {toggleInfoBox && (
-        <InfoBox>
+        <InfoBox isMobile={isMobile}>
           <InfoBoxTitleContainer>
             <InfoBoxTitle>Ingredients:</InfoBoxTitle>
           </InfoBoxTitleContainer>
@@ -84,9 +87,9 @@ const Card = (props) => {
           <Description>{description}</Description>
         </Top>
         <Bottom>
-          <Price>{price.toFixed(2)} {currency}</Price>
+          <Price isMobile={isMobile}>{price.toFixed(2)} {currency}</Price>
           {priceOld && (
-          <PriceOld>{priceOld.toFixed(2)} {currency}</PriceOld>
+          <PriceOld isMobile={isMobile}>{priceOld.toFixed(2)} {currency}</PriceOld>
           )}
           <ButtonContainer onClick={() => { addProduct({ id, name: title, price }); playAddToCart(); showSnackbarHandler(); }}>
             <OrderButton>ORDER</OrderButton>
